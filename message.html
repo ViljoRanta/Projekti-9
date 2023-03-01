@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<html lang="fi">
+<head>
+<title> Drip'n Drop - jätä meille viesti tältä sivulta</title>
+<link rel="icon" type="image/x-icon" href="https://i.pinimg.com/474x/4a/f7/9e/4af79e57b01b6e943388fc58b0fe7bb5.jpg">
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tyyli.css">
+<style>
+
+body {
+margin: 0;
+background-color:#faf8f8;
+color: #707068;
+font-family: 'Noto Sans', sans-serif;
+}
+
+input {
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 390px;
+background-color: #faf8f8;
+font-size:32px;
+padding: 5px 10px;
+border-radius: 8px;
+border-bottom: 2px solid #fbf9f9;
+border-right: 2px solid #fbf9f9;
+border-top: 2px solid #f3f1f1;
+border-left: 2px solid #f3f1f1;
+}
+
+input.contacts {
+display: block;
+height: auto;
+width: auto;
+}
+
+textarea {
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 390px;
+height: 400px;
+background-color: #faf8f8;
+font-size:16px;
+padding: 5px 10px;
+border-radius: 8px;
+border-bottom: 2px solid #fbf9f9;
+border-right: 2px solid #fbf9f9;
+border-top: 2px solid #f3f1f1;
+border-left: 2px solid #f3f1f1;
+}
+
+input:hover {
+background-color:#f7f5f5;
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+window.onscroll = function() {himmennys()};
+window.onload = function() {mobile()};
+
+function mobile() {
+  if (window.innerWidth < 830) {
+    document.body.innerHTML += `
+      <nav id="nav">
+      <button onclick="expand()">+</button>
+      </nav>
+    `;
+  } else { 
+    document.body.innerHTML += `
+      <nav id="nav">
+      <ul class="navigation">
+      <li id="name">Drip'n Drop</li>
+      <li><a href="message.html"> Ota yhteyttä </a></li>
+      <li><a href="#yhteystiedot"> Yhteystiedot </a></li>
+      <li><a href="services.html"> Palvelut </a></li>
+      <li><a href="viesti.html"> 🇫🇮 </a></li>
+      </ul>
+      </nav>
+    `;
+  }
+}
+
+function himmennys() {
+  var Scroll = document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  if (Scroll<400) {
+    document.getElementById("nav").style.opacity = (1-(Scroll/height)*1.6);
+  } else {
+    document.getElementById("nav").style.opacity = 0.63;
+  }
+}
+
+function expand() {
+  document.body.innerHTML += `
+    <nav id="mobinav">
+    <ul class="navigation">
+    <button onclick="hide()">-</button>
+    <li><a href="message.html"> Ota yhteyttä </a></li>
+    <li><a href="#yhteystiedot"> Yhteystiedot </a></li>
+    <li><a href="services.html"> Palvelut </a></li>
+    <li><a href="viesti.html"> 🇫🇮 </a></li>
+    </ul>
+    </nav>
+  `;
+}
+
+function hide() {
+  document.getElementById("mobinav").remove();
+}
+</script>
+
+<noscript>
+<nav id="nav">
+<ul class="navigation">
+<li id="name">Drip'n Drop</li>
+<li><a href="message.html"> Ota yhteyttä </a></li>
+<li><a href="#yhteystiedot"> Yhteystiedot </a></li>
+<li><a href="services.html"> Palvelut </a></li>
+<li><a href="viesti.html"> 🇫🇮 </a></li>
+</ul>
+</nav>
+</noscript>
+  
+<main>
+<div style="padding: 25% 0 0; text-align: center;">
+<form method="post" action="yhteydenotto.php">
+<input class="contacts" type="email" name="email" placeholder="Sähköposti"> tai <input class="contacts" type="number" name="number" placeholder="Puhelinnumero"><br>
+<textarea class="message" name="message" placeholder="Viesti" required maxlength="300"></textarea><br>
+<input type="submit" value="Lähetä viesti"><br>
+<a href="index.html"> Palaa etusivulle </a>
+</form>
+</div>
+</main>
+
+</body>
+</html>
