@@ -17,10 +17,25 @@ window.onscroll = function() {himmennys()};
 window.onload = function() {mobile()};
 
 function mobile() {
-  if (window.innerWidth < 523) {
-    document.getElementById("name").remove();
-  } else {
-    document.getElementById("name2nd").remove();
+  if (window.innerWidth < 830) {
+    document.getElementById("bottom").style.marginTop = "145%";
+    document.getElementById("footer").style.marginTop = "600%";
+    document.body.innerHTML += `
+      <nav id="nav">
+      <button onclick="expand()">+</button>
+      </nav>
+    `;
+  } else { 
+    document.body.innerHTML += `
+      <nav id="nav">
+      <ul class="navigation">
+      <li id="name">Drip'n Drop</li>
+      <li><a href="viesti.html"> Ota yhteyttä </a></li>
+      <li><a href="#yhteystiedot"> Yhteystiedot </a></li>
+      <li><a href="#palvelut"> Palvelut </a></li>
+      </ul>
+      </nav>
+    `;
   }
 }
 
@@ -32,10 +47,27 @@ function himmennys() {
   } else {
     document.getElementById("nav").style.opacity = 0.63;
   }
-  document.getElementById("kortti1").style.left = (1000-((Scroll/height)*2250)) + "px";
-  document.getElementById("kortti2").style.left = (1400-((Scroll/height)*2250)) + "px";
-  document.getElementById("kortti3").style.left = (1800-((Scroll/height)*2250))  + "px";
-  document.getElementById("kortti4").style.left = (2200-((Scroll/height)*2250))  + "px";
+  document.getElementById("kortti1").style.left = (1000-((Scroll/height)*3000)) + "px";
+  document.getElementById("kortti2").style.left = (1400-((Scroll/height)*3000)) + "px";
+  document.getElementById("kortti3").style.left = (1800-((Scroll/height)*3000))  + "px";
+  document.getElementById("kortti4").style.left = (2200-((Scroll/height)*3000))  + "px";
+}
+
+function expand() {
+  document.body.innerHTML += `
+    <nav id="mobinav">
+    <ul class="navigation">
+    <button onclick="hide()">-</button>
+    <li style="float:none; text-align: center;"><a href="#yhteystiedot"> Yhteystiedot </a></li>
+    <li style="float:none; text-align: center;"><a href="#palvelut"> Palvelut </a></li>
+    <li style="float:none; text-align: center;"><a href="viesti.html"> Ota yhteyttä </a></li>
+    </ul>
+    </nav>
+  `;
+}
+
+function hide() {
+  document.getElementById("mobinav").remove();
 }
 </script>
 
@@ -66,25 +98,25 @@ Sposti: viljo.ranta@dripndrop.fi | vilho.ranta@dripndrop.fi </p>
 <h2> Jan Söderlund </h2>
 <p> "Jan Söderlund on ollut tälle yritykselle korvaamaton. Hänen työnsä laatuun on voinut aina luottaa ja hän on aina pysynyt aikataulussa"<br>
 Puhelin numero: xxx xxx xxxx <br>
-Sposti: x@x.fi
+Sposti: jan.soderlund@dripndrop.fi
 </article>
 <article id="kortti3">
 <h2> Onni Rihko </h2>
 <p> "Onni Rihko on ollut tälle yritykselle korvaamaton. Hänen työnsä laatuun on voinut aina luottaa ja hän on aina pysynyt aikataulussa"<br>
 Puhelin numero: xxx xxx xxxx <br>
-Sposti: x@x.fi
+Sposti: onni.rihko@dripndrop.fi
 </article>
 <article id="kortti4">
 <h2> Severi Rauhala </h2>
 <p> "Severi Rauhala on ollut tälle yritykselle korvaamaton. Hänen työnsä laatuun on voinut aina luottaa ja hän on aina pysynyt aikataulussa"<br>
 Puhelin numero: xxx xxx xxxx <br>
-Sposti: x@x.fi
+Sposti: severi.rauhala@dripndrop.fi
 </article>
 </p>
 <p class="bottom"> Drip'n Drop OY 2023 </p>
 </div>
 
-<div style="position: sticky; top: 50%; margin: 100% 0 -10%;">
+<div id="footer" style="position: sticky; top: 50%; margin: 250% 0 -10%;">
 <p style="text-align:center"> Y-tunnus: xxxxx | Osoite: xxxxx </p>
 </div>
 
