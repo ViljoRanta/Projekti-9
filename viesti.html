@@ -64,8 +64,72 @@ background-color:#f7f5f5;
 
 <body>
 
+<script>
+window.onscroll = function() {himmennys()};
+window.onload = function() {mobile()};
+
+function mobile() {
+  if (window.innerWidth < 830) {
+    document.body.innerHTML += `
+      <nav id="nav">
+      <button onclick="expand()">+</button>
+      </nav>
+    `;
+  } else { 
+    document.body.innerHTML += `
+      <nav id="nav">
+      <ul class="navigation">
+      <li id="name">Drip'n Drop</li>
+      <li><a href="viesti.html"> Ota yhteyttä </a></li>
+      <li><a href="index.html#yhteystiedot"> Yhteystiedot </a></li>
+      <li><a href="palvelut.html"> Palvelut </a></li>
+      </ul>
+      </nav>
+    `;
+  }
+}
+
+function himmennys() {
+  var Scroll = document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  if (Scroll<400) {
+    document.getElementById("nav").style.opacity = (1-(Scroll/height)*1.6);
+  } else {
+    document.getElementById("nav").style.opacity = 0.63;
+  }
+}
+
+function expand() {
+  document.body.innerHTML += `
+    <nav id="mobinav">
+    <ul class="navigation">
+    <button onclick="hide()">-</button>
+    <li style="float:none; text-align: center;"><a href="index.html#yhteystiedot"> Yhteystiedot </a></li>
+    <li style="float:none; text-align: center;"><a href="palvelut.html"> Palvelut </a></li>
+    <li style="float:none; text-align: center;"><a href="viesti.html"> Ota yhteyttä </a></li>
+    </ul>
+    </nav>
+  `;
+}
+
+function hide() {
+  document.getElementById("mobinav").remove();
+}
+</script>
+
+<noscript>
+<nav id="nav">
+<ul class="navigation">
+<li id="name">Drip'n Drop</li>
+<li><a href="viesti.html"> Ota yhteyttä </a></li>
+<li><a href="index.html#yhteystiedot"> Yhteystiedot </a></li>
+<li><a href="palvelut.html"> Palvelut </a></li>
+</ul>
+</nav>
+</noscript>
+  
 <main>
-<div style="padding: 5% 0 0; text-align: center;">
+<div style="padding: 25% 0 0; text-align: center;">
 <form method="post" action="yhteydenotto.php">
 <input class="contacts" type="email" name="email" placeholder="Sähköposti"> tai <input class="contacts" type="number" name="number" placeholder="Puhelinnumero"><br>
 <textarea class="message" name="message" placeholder="Viesti" required maxlength="300"></textarea><br>
